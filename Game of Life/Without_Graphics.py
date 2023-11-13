@@ -1,4 +1,4 @@
-import SIM2 as SIM
+import SIM as SIM
 import cProfile
 
 grid_size = (1000,1000)
