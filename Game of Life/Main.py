@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-import SIM2 as SIM
+import SIM as SIM
 
-grid_size = (2000,2000)
+grid_size = (1500,1500)
 p = (0.03,0.97)
 
 Game = SIM.Game(grid_size,p)

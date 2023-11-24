@@ -15,16 +15,16 @@ D4_5 = 0.1
 D1 = 0.2
 d = (D1,D4_5,D3_5,D2_5,D1_5,D0)
 
-s = 0.03
-g = 0.8
+#s = 0.03
+g = 0.7
 
 
 #-------------------------------------------
 
 #test settings
-from_ = 70
-to = 85
-spec = 100
+from_ = 0.005
+to = 0.015
+number_of_steps = 30
 #-----------------------------------------
 
 
@@ -34,12 +34,12 @@ thngs_alive_conuts = []
 
 
 
-for i in range(from_,to):
-	thing = g = i/spec
+for i in range(number_of_steps):
+	thing = s =  from_ +i*((to-from_)/number_of_steps)
 
 	sim = SIM.I(grid_size,d,s,g)
 
-	for loop in range(15):
+	for loop in range(30):
 		sim.frame()
 		
 	things_alive = len(sim.alive) 
