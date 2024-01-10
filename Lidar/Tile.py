@@ -1,16 +1,29 @@
 import open3d as o3d
 import laspy
 import numpy as np
+from os import listdir
 
-nums = [2672,2673,2674,2572,2573,2574]
-paths = [f"NT{num}_4PPM_LAS_PHASE5" for num in nums]
-print(paths)
+paths = listdir("Edinburgh")
 
-las = laspy.read('NT2572_4PPM_LAS_PHASE5.laz')
+laslist = [laspy.read(f'Edinburgh/{path}') for path in paths]
 
-x = las.X 
-y = las.Y 
-z = las.Z 
+x = laslist[0].X
+y = laslist[0].Y
+z = laslist[0].Z
+
+
+for las in laslist[1:]:
+    print(las.header.x_offset)
+    print(las.header.y_offset)
+    print(las.header.z_offset)
+    print(las.header.min[0],end="\n\n")
+    """x = np.append(x,las.X + (1_000_000 * ((las.header.min[0] - laslist[0].header.min[0])/1_000)))
+    y = np.append(y,las.Y + (1_000_000 * ((las.header.min[1] - laslist[0].header.min[1])/1_000)))"""#this works too, offset is just some kinda global value of location
+    x = np.append(x,las.X + (1_000_000 * (las.header.x_offset - laslist[0].header.x_offset)/1_000))
+    y = np.append(y,las.Y + (1_000_000 * (las.header.y_offset - laslist[0].header.y_offset)/1_000))
+    z = np.append(z,las.Z + (1_000_000 * (las.header.z_offset - laslist[0].header.z_offset)/1_000))
+
+
 
 xyz = np.dstack([x,y,z])[0]
 

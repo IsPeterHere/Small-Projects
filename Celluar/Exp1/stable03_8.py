@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import SIM
 
-grid_size = 200
+grid_size = 300
 
 D0 = 0.4
 D1_5 = 0.1
@@ -20,8 +20,6 @@ fig, ax = plt.subplots()
 grid = i.grid
 # create an image plot of the grid
 im = ax.imshow(grid, cmap='gray')
-
-
 
 
 def update(frame):

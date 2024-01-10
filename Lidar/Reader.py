@@ -92,13 +92,13 @@ with open("bound.json","w") as f:
 
 #harehope 'NT2044_4PPM_LAS_PHASE3.laz'
 
-las = laspy.read('NT2572_4PPM_LAS_PHASE5.laz')
+las = laspy.read('NT2044_4PPM_LAS_PHASE3.laz')
 
 print(list(las.point_format.dimension_names))
 print(las.key_point)
 print(las.header.min[2])
 
-"""
+
 x = las.X 
 y = las.Y 
 z = las.Z 
@@ -118,4 +118,4 @@ selected_pcd = vol.crop_point_cloud(pcd)
 
 
 # Display the selected point cloud
-o3d.visualization.draw_geometries([selected_pcd])"""
+o3d.visualization.draw_geometries([selected_pcd])
