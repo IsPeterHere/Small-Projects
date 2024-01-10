@@ -3,19 +3,18 @@ import laspy
 import numpy as np
 from os import listdir
 
-paths = listdir("Edinburgh")
-
-laslist = [laspy.read(f'Edinburgh/{path}') for path in paths]
+folder = "Shetland"
+paths = listdir(folder)
+laslist = [laspy.read(f'{folder}/{path}') for path in paths]
 
 x = laslist[0].X
 y = laslist[0].Y
 z = laslist[0].Z
 
-
 for las in laslist[1:]:
-    print(las.header.x_offset)
-    print(las.header.y_offset)
-    print(las.header.z_offset)
+    print(las.header.x_offset,las.header.min[0])
+    print(las.header.y_offset,las.header.min[1])
+    print(las.header.z_offset,las.header.min[2])
     print(las.header.min[0],end="\n\n")
     """x = np.append(x,las.X + (1_000_000 * ((las.header.min[0] - laslist[0].header.min[0])/1_000)))
     y = np.append(y,las.Y + (1_000_000 * ((las.header.min[1] - laslist[0].header.min[1])/1_000)))"""#this works too, offset is just some kinda global value of location

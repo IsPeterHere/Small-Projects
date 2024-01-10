@@ -92,7 +92,7 @@ with open("bound.json","w") as f:
 
 #harehope 'NT2044_4PPM_LAS_PHASE3.laz'
 
-las = laspy.read('NT2044_4PPM_LAS_PHASE3.laz')
+las = laspy.read('Shetland/HU30NE_2PPM_LAS_PHASE2.laz')
 
 print(list(las.point_format.dimension_names))
 print(las.key_point)
