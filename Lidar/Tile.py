@@ -134,7 +134,7 @@ c3 = normals@[-1/2,-1.73,0]
 
 e = np.zeros(shape = [len(normals)])
 
-cn = np.dstack([e,c1,e])[0]
+cn = np.dstack([c1,c2,c3])[0]
 
 
 selected_pcd.colors = o3d.utility.Vector3dVector(cn)
